@@ -1,76 +1,233 @@
-# GraphRAG
+# KnowledgeMesh AI
 
-👉 [Microsoft Research Blog Post](https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/)<br/>
-👉 [Read the docs](https://microsoft.github.io/graphrag)<br/>
-👉 [GraphRAG Arxiv](https://arxiv.org/pdf/2404.16130)
+KnowledgeMesh AI is a production-ready Graph-Based Retrieval Platform that combines semantic search, knowledge graphs, and Large Language Models to deliver highly accurate enterprise question answering.
 
-<div align="left">
-  <a href="https://pypi.org/project/graphrag/">
-    <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/graphrag">
-  </a>
-  <a href="https://pypi.org/project/graphrag/">
-    <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/graphrag">
-  </a>
-  <a href="https://github.com/microsoft/graphrag/issues">
-    <img alt="GitHub Issues" src="https://img.shields.io/github/issues/microsoft/graphrag">
-  </a>
-  <a href="https://github.com/microsoft/graphrag/discussions">
-    <img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/microsoft/graphrag">
-  </a>
-</div>
+The system automatically extracts entities and relationships from documents, constructs a knowledge graph, and performs hybrid retrieval using both graph traversal and vector similarity before generating responses with an LLM.
 
-## Overview
+---
 
-The GraphRAG project is a data pipeline and transformation suite that is designed to extract meaningful, structured data from unstructured text using the power of LLMs.
+## Features
 
-To learn more about GraphRAG and how it can be used to enhance your LLM's ability to reason about your private data, please visit the <a href="https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/" target="_blank">Microsoft Research Blog Post.</a>
+- Graph-based Retrieval
+- Hybrid Semantic Search
+- Knowledge Graph Construction
+- Multi-Hop Question Answering
+- Entity & Relationship Extraction
+- Incremental Graph Updates
+- Vector Search
+- Context Ranking
+- Cross-Encoder Re-ranking
+- Enterprise Document Processing
+- REST API
+- Authentication & Authorization
+- Monitoring Dashboard
+- Prompt Evaluation
+- Docker Deployment
+- Kubernetes Ready
 
-## Quickstart
+---
 
-To get started with the GraphRAG system we recommend trying the [command line quickstart](https://microsoft.github.io/graphrag/get_started/).
+## Architecture
 
-## Repository Guidance
+```
+                    Documents
 
-This repository presents a methodology for using knowledge graph memory structures to enhance LLM outputs. Please note that the provided code serves as a demonstration and is not an officially supported Microsoft offering.
+                        │
 
-⚠️ *Warning: GraphRAG indexing can be an expensive operation, please read all of the documentation to understand the process and costs involved, and start small.*
+         ┌──────────────┴──────────────┐
 
-## Diving Deeper
+         │                             │
 
-- To learn about our contribution guidelines, see [CONTRIBUTING.md](./CONTRIBUTING.md)
-- To start developing _GraphRAG_, see [DEVELOPING.md](./DEVELOPING.md)
-- Join the conversation and provide feedback in the [GitHub Discussions tab!](https://github.com/microsoft/graphrag/discussions)
+ Entity Extraction              Metadata Processing
 
-## Prompt Tuning
+         │                             │
 
-Using _GraphRAG_ with your data out of the box may not yield the best possible results.
-We strongly recommend to fine-tune your prompts following the [Prompt Tuning Guide](https://microsoft.github.io/graphrag/prompt_tuning/overview/) in our documentation.
+         └──────────────┬──────────────┘
 
-## Versioning
+                        │
 
-Please see the [breaking changes](./breaking-changes.md) document for notes on our approach to versioning the project.
+               Knowledge Graph Builder
 
-*Always run `graphrag init --root [path] --force` between minor version bumps to ensure you have the latest config format. Run the provided migration notebook between major version bumps if you want to avoid re-indexing prior datasets. Note that this will overwrite your configuration and prompts, so backup if necessary.*
+                        │
 
-## Responsible AI FAQ
+              Graph Database (Neo4j)
 
-See [RAI_TRANSPARENCY.md](./RAI_TRANSPARENCY.md)
+                        │
 
-- [What is GraphRAG?](./RAI_TRANSPARENCY.md#what-is-graphrag)
-- [What can GraphRAG do?](./RAI_TRANSPARENCY.md#what-can-graphrag-do)
-- [What are GraphRAG’s intended use(s)?](./RAI_TRANSPARENCY.md#what-are-graphrags-intended-uses)
-- [How was GraphRAG evaluated? What metrics are used to measure performance?](./RAI_TRANSPARENCY.md#how-was-graphrag-evaluated-what-metrics-are-used-to-measure-performance)
-- [What are the limitations of GraphRAG? How can users minimize the impact of GraphRAG’s limitations when using the system?](./RAI_TRANSPARENCY.md#what-are-the-limitations-of-graphrag-how-can-users-minimize-the-impact-of-graphrags-limitations-when-using-the-system)
-- [What operational factors and settings allow for effective and responsible use of GraphRAG?](./RAI_TRANSPARENCY.md#what-operational-factors-and-settings-allow-for-effective-and-responsible-use-of-graphrag)
+        ┌───────────────┴────────────────┐
 
-## Trademarks
+        │                                │
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft
-trademarks or logos is subject to and must follow
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.
+  Graph Traversal                  Vector Search
 
-## Privacy
+        │                                │
 
-[Microsoft Privacy Statement](https://privacy.microsoft.com/en-us/privacystatement)
+        └───────────────┬────────────────┘
+
+                        │
+
+              Hybrid Retrieval Engine
+
+                        │
+
+               Cross Encoder Ranking
+
+                        │
+
+                 Large Language Model
+
+                        │
+
+                  Generated Response
+```
+
+---
+
+## Technology Stack
+
+### Backend
+
+- Python
+- FastAPI
+- LangChain
+- LlamaIndex
+
+### AI
+
+- OpenAI
+- Llama 3
+- Mistral
+- Sentence Transformers
+
+### Graph Database
+
+- Neo4j
+
+### Vector Database
+
+- Qdrant
+
+### Infrastructure
+
+- Docker
+- Kubernetes
+- GitHub Actions
+
+### Monitoring
+
+- Prometheus
+- Grafana
+
+---
+
+## Project Structure
+
+```
+knowledgemesh-ai/
+
+├── api/
+├── ingestion/
+├── graph/
+├── retrieval/
+├── ranking/
+├── embeddings/
+├── llm/
+├── evaluation/
+├── monitoring/
+├── pipelines/
+├── configs/
+├── docker/
+├── kubernetes/
+├── tests/
+├── docs/
+└── README.md
+```
+
+---
+
+## Core Components
+
+### Document Ingestion
+
+- PDF Processing
+- DOCX Processing
+- HTML Processing
+- Incremental Indexing
+
+### Knowledge Extraction
+
+- Named Entity Recognition
+- Relationship Detection
+- Graph Construction
+- Metadata Generation
+
+### Retrieval Engine
+
+- Graph Traversal
+- Hybrid Search
+- Context Expansion
+- Re-ranking
+
+### Generation
+
+- Prompt Templates
+- Context Compression
+- Citation Generation
+- Hallucination Reduction
+
+---
+
+## API Endpoints
+
+```
+POST   /documents/upload
+
+POST   /documents/index
+
+POST   /query
+
+GET    /graph/statistics
+
+GET    /health
+
+GET    /metrics
+```
+
+---
+
+## Deployment
+
+Run locally
+
+```bash
+docker compose up
+```
+
+Deploy
+
+```bash
+kubectl apply -f kubernetes/
+```
+
+---
+
+## Future Improvements
+
+- Multi-Agent Retrieval
+- Knowledge Graph Versioning
+- Distributed Graph Processing
+- Adaptive Query Planning
+- Real-Time Streaming Updates
+- Automatic Ontology Generation
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Contributors
+
+KnowledgeMesh AI Team
